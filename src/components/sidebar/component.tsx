@@ -7,7 +7,7 @@ import { HiHome } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi';
 import { IconType } from 'react-icons';
 import { SidebarBlock, SidebarItem } from '@/components/sidebar/sub-components';
-import { Library } from '@/components/sidebar/library';
+import { Library } from '../library';
 
 interface Route {
   label: string;

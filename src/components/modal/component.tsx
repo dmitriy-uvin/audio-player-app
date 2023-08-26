@@ -43,7 +43,8 @@ export const Modal = ({ isOpen, onChange, title, description = '', children = nu
           }
           {!!children && <div>{children}</div>}
           <DialogClose asChild>
-            <button className='
+            <button
+              className='
               text-neutral-400
               hover:text-white
               absolute
@@ -57,7 +58,9 @@ export const Modal = ({ isOpen, onChange, title, description = '', children = nu
               justify-center
               rounded-full
               focus:outline-none
-            '><IoMdClose/></button>
+              '
+              onClick={() => onChange(false)}
+            ><IoMdClose/></button>
           </DialogClose>
         </DialogContent>
       </DialogPortal>
