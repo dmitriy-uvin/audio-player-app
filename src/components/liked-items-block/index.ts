@@ -1,0 +1,1 @@
+export { LikedItemsBlock } from './component';
