@@ -1,3 +1,5 @@
+'use client'
+
 import { SongItemProps } from '@/components/liked-items-block/types';
 import Image from 'next/image';
 import { FaPlay } from 'react-icons/fa';

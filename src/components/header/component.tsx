@@ -1,20 +1,23 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { RxCaretLeft, RxCaretRight } from 'react-icons/rx';
 import { HiHome } from 'react-icons/hi';
 import { BiSearch } from 'react-icons/bi';
 import { Button } from '@/components/button';
-import { LikedItemsBlock } from '@/components/liked-items-block';
+
 import { useAuthModal, useUser } from '@/hooks';
 import { useSupabaseClient } from '@supabase/auth-helpers-react';
 import { FaUserAlt } from 'react-icons/fa';
 import toast from 'react-hot-toast';
+import { ReactNode } from 'react';
+import { LikedItemsBlock } from '@/components/liked-items-block';
 
 export const Header = () => {
   const router = useRouter();
   const { onOpen } = useAuthModal();
   const supabaseClient = useSupabaseClient();
   const { user } = useUser();
+  const path = usePathname();
   
   const logout = async () => {
     const { error } = await supabaseClient.auth.signOut();
@@ -68,7 +71,7 @@ export const Header = () => {
           </div>}
         </div>
       </div>
-      <div className='mb-2'>
+      {path === '/' && <div className='mb-2'>
         <h1 className='text-white text-3xl font-semibold'>Welcome!</h1>
         <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4'>
           <LikedItemsBlock
@@ -77,7 +80,7 @@ export const Header = () => {
             href='/liked'
           />
         </div>
-      </div>
+      </div>}
     </div>
   );
 }
