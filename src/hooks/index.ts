@@ -4,3 +4,7 @@ export { useUploadModal } from './use-upload-modal';
 export { useLoading } from './use-loading';
 export { useLoadImg } from './use-load-img';
 export { useDebounce } from './use-debounce';
+export { usePlayer } from './use-player';
+export { useSongById } from './use-song-by-id';
+export { useLoadSong } from './use-load-song';
+export { useOnPlay } from './use-on-play';
