@@ -2,6 +2,7 @@
 
 import { Song } from "@/types";
 import { LibraryItem } from '@/components/library-item';
+import { LikeButton } from '@/components/like-button';
 
 
 interface SearchContentProps {
@@ -36,6 +37,7 @@ export const SearchContent = ({ songs }: SearchContentProps) => {
           <div className="flex-1">
             <LibraryItem data={song} />
           </div>
+          <LikeButton id={song.id} />
         </div>
       ))}
     </div>
