@@ -1,8 +1,11 @@
 import { TbPlaylist } from 'react-icons/tb';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { useAuthModal, useUploadModal, useUser } from '@/hooks';
+import { LibraryProps } from '@/components/library/types';
+import { Song } from '@/types';
+import { LibraryItem } from '@/components/library-item';
 
-export const Library = () => {
+export const Library = ({ songs }: LibraryProps) => {
   const { onOpen: openAuthModal } = useAuthModal();
   const { user } = useUser();
   const { onOpen: openUploadModal} = useUploadModal();
@@ -27,7 +30,7 @@ export const Library = () => {
         </div>
       </div>
       <div className='flex flex-col gap-y-2 mt-4 px-3'>
-        List of songs
+        {songs.map((s: Song) => <LibraryItem data={s} key={s.id} />)}
       </div>
     </div>
   );

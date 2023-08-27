@@ -16,7 +16,7 @@ interface Route {
   icon: IconType;
 }
 
-export const Sidebar = ({ }: SidebarProps) => {
+export const Sidebar = ({ songs }: SidebarProps) => {
   const path = usePathname();
   const routes = useMemo<Route[]>(() => [
     {
@@ -50,7 +50,7 @@ export const Sidebar = ({ }: SidebarProps) => {
           </div>
         </SidebarBlock>
         <SidebarBlock className='overflow-y-auto h-full'>
-          <Library />
+          <Library songs={songs} />
         </SidebarBlock>
       </div>
     </div>

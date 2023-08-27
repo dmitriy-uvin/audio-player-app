@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { Sidebar } from '@/components/sidebar';
 import { Header } from '@/components/header';
 import { ModalProvider, SupabaseProvider, ToastProvider, UserProvider } from '@/providers';
+import { getOwnSongs } from '@/requests';
 
 const font = Figtree({ subsets: ['latin'] })
 
@@ -13,11 +14,15 @@ export const metadata: Metadata = {
   description: 'Listen to music!',
 }
 
-export default function RootLayout({
+export const revalidate = 0;
+
+export default async function RootLayout({
   children,
 }: {
   children: ReactNode
 }) {
+  const ownSongs = await getOwnSongs();
+  
   return (
     <html lang="en">
       <body className={font.className}>
@@ -26,7 +31,7 @@ export default function RootLayout({
         <UserProvider>
           <ModalProvider />
           <div className='flex flex-row h-full'>
-            <Sidebar />
+            <Sidebar songs={ownSongs} />
             <main className="h-full flex-1 overflow-y-auto p-2 pl-0">
               <div className='bg-neutral-900 h-full w-full overflow-y-auto overflow-hidden rounded-lg'>
                 <Header />
