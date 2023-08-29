@@ -6,9 +6,9 @@ import { useUser } from '@/hooks/use-user';
 export const useOnPlay = (songs: Song[]) => {
   const player = usePlayer();
   const authModal = useAuthModal();
-  const { subscription, user } = useUser();
+  const { user } = useUser();
   
-  const onPlay = (id: string) => {
+  return (id: string) => {
     if (!user) {
       return authModal.onOpen();
     }
@@ -19,7 +19,5 @@ export const useOnPlay = (songs: Song[]) => {
     
     player.setId(id);
     player.setIds(songs.map((song) => song.id));
-  }
-  
-  return onPlay;
+  };
 };

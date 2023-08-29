@@ -1,6 +1,6 @@
 "use client";
 
-import useSound from "use-sound";
+import useSound from 'use-sound';
 import { useEffect, useState } from "react";
 import { BsPauseFill, BsPlayFill } from "react-icons/bs";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
@@ -79,21 +79,9 @@ export const PlayerControls = ({ song, songUrl }: PlayerContentProps) => {
     }
   }, [sound]);
   
-  const handlePlay = () => {
-    if (!isPlaying) {
-      play();
-    } else {
-      pause();
-    }
-  }
+  const handlePlay = () => isPlaying ? pause() : play();
   
-  const toggleMute = () => {
-    if (volume === 0) {
-      setVolume(1);
-    } else {
-      setVolume(0);
-    }
-  }
+  const toggleMute = () => volume === 0 ? setVolume(1) : setVolume(0);
   
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 h-full">
@@ -195,7 +183,6 @@ export const PlayerControls = ({ song, songUrl }: PlayerContentProps) => {
           />
         </div>
       </div>
-    
     </div>
   );
 }
